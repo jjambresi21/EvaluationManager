@@ -36,5 +36,7 @@ namespace Evaluation_Manager
                 MessageBox.Show("Neispravni podaci");
             }
         }
+
+       
     }
 }
