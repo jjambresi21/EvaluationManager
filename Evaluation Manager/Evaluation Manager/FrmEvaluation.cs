@@ -23,5 +23,20 @@ namespace Evaluation_Manager
             var activities = ActivityRepository.GetActivities();
             cboActivities.DataSource = activities;
         }
+
+        private void cboActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var currentActivity = cboActivities.SelectedItem as Models.Activity;
+            //var currentActivity = cboActivities.SelectedItem as Activity;
+            txtActivityDescription.Text = currentActivity.Description; 
+            txtMinForGrade.Text = currentActivity.MinPointsForGrade + "/" + currentActivity.MaxPoints; 
+            txtMinForSignature.Text = currentActivity.MinPointsForSignature + "/" + currentActivity.MaxPoints; 
+            numPoints.Minimum = 0; numPoints.Maximum = currentActivity.MaxPoints;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
