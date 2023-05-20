@@ -1,4 +1,5 @@
 ﻿using Evaluation_Manager.Models;
+using Evaluation_Manager.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,10 +21,10 @@ namespace Evaluation_Manager
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            public static Teacher LoggedTeacher { get; set; }
 
-            if (username == "nastavnik" && password == "test")
+            LoggedTeacher = TeacherRepository.GetTeacher(txtUsername.Text); 
+            if (LoggedTeacher != null && LoggedTeacher.CheckPassword(txtPassword.Text)) 
             {
                 FrmStudents frmStudents = new FrmStudents();
                 Hide();
